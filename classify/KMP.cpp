@@ -6,14 +6,38 @@ using namespace std;
   
 void KmpSearch(char[], char[], int[]);  
 void GetNextval(char[], int next[]);  
-  
+void GetNext(char* p,int next[])  
+{  
+    int pLen = strlen(p);  
+    next[0] = -1;  
+    int k = -1;  
+    int j = 0;  
+    while (j < pLen - 1)  
+    {  
+        //p[k]表示前缀，p[j]表示后缀  
+        if (k == -1 || p[j] == p[k])   
+        {  
+            ++k;  
+            ++j;  
+            next[j] = k;  
+        }  
+        else   
+        {  
+            k = next[k];  
+        }  
+    }
+    for (int i=0; i<pLen-1; i++)
+		cout<< next[i] <<" "; 
+}  
 int main(){  
-    int nextarr[I_N_MAX];  
+    int nextarr[I_N_MAX];
+	int next[I_N_MAX]; 
     char cArr1[I_N_MAX];  
     char cArr2[I_N_MAX];  
     cin >> cArr1;  
     cin >> cArr2;  
-    GetNextval(cArr1, nextarr);  
+    GetNext(cArr2,next);
+    GetNextval(cArr2, nextarr);  
     KmpSearch(cArr1, cArr2, nextarr);   
 }  
 
@@ -49,7 +73,7 @@ void GetNextval(char p[], int nextarr[]){
     nextarr[0] = -1;  
     int k = -1;  
     int j = 0;  
-    while (j < pLenth - 1)  
+    while (j < pLenth-1)  
     {  
         if (k == -1 || p[j] == p[k]){  
             j++; k++;  
@@ -65,5 +89,8 @@ void GetNextval(char p[], int nextarr[]){
         {  
             k = nextarr[k];  
         }  
-    }  
+    }
+	cout<<endl;
+    for (int i=0; i<pLenth-1; i++)
+		cout<< nextarr[i] <<" "; 
 }  
