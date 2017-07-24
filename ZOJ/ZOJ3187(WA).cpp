@@ -46,9 +46,9 @@ int main()
             scanf("%d%d", &r[i].s2, &r[i].p2);
         }
         int min = 0, max = 100000;
-        int mid;
+        int mid = (min + max)/2;
         int cost;
-        while (max - min > 1)
+        while (mid != max)
         {
             mid = (max + min) / 2;
             //cout<<"min="<<min<<" max="<<max<<" mid="<<mid<<endl;
@@ -57,7 +57,7 @@ int main()
             {
                 cost += GetMoney(i,mid);
             }
-            if (cost > m)
+            if (cost >= m)
             {
                 //people too much; 
                 max = mid;
