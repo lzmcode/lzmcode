@@ -1,8 +1,5 @@
 /**
  * AVLÊ÷(CÓïÑÔ): CÓïÑÔÊµÏÖµÄAVLÊ÷¡£
- *
- * @author skywang
- * @date 2013/11/07
  */
 
 #include <stdio.h>
