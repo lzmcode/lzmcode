@@ -4,11 +4,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include "avltree.h"
-
-#define HEIGHT(p)    ( (p==NULL) ? -1 : (((Node *)(p))->height) )
-#define MAX(a, b)    ( (a) > (b) ? (a) : (b) )
-
+#define HEIGHT(p) ( (p==NULL) ? -1 : (((Node *)(p))->height) )
+#define MAX(a, b) ( (a) > (b) ? (a) : (b) )
 /*
  * 获取AVL树的高度
  */
