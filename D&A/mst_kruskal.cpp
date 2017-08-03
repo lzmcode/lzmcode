@@ -5,7 +5,6 @@
 using namespace std;
 
 int father[MAX];            //并查集 
-priority_queue<_Edge> SQ;   //优先队列 
 
 struct _Edge{
     int from, des;
@@ -15,6 +14,7 @@ struct _Edge{
         return (a.cost > b.cost); 
     } 
 };
+priority_queue<_Edge> SQ;   //优先队列 
 
 int find(int x)
 {
