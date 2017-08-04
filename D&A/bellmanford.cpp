@@ -74,30 +74,3 @@ int main()
         printf("have negative circle\n");
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
