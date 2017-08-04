@@ -1,0 +1,174 @@
+C++ STL--stack/queue 的使用方法：
+1、stack
+stack 模板类的定义在<stack>头文件中。
+stack 模板类需要两个模板参数，一个是元素类型，一个容器类型，但只有元素类型是必要
+的，在不指定容器类型时，默认的容器类型为deque。
+定义stack 对象的示例代码如下：
+stack<int> s1;
+stack<string> s2;
+stack 的基本操作有：
+入栈，如例：s.push(x);
+出栈，如例：s.pop();注意，出栈操作只是删除栈顶元素，并不返回该元素。
+访问栈顶，如例：s.top()
+判断栈空，如例：s.empty()，当栈空时，返回true。
+访问栈中的元素个数，如例：s.size()。
+
+2、queue
+queue 模板类的定义在<queue>头文件中。
+与stack 模板类很相似，queue 模板类也需要两个模板参数，一个是元素类型，一个容器类
+型，元素类型是必要的，容器类型是可选的，默认为deque 类型。
+定义queue 对象的示例代码如下：
+queue<int> q1;
+queue<double> q2;
+
+queue 的基本操作有：
+入队，如例：q.push(x); 将x 接到队列的末端。
+出队，如例：q.pop(); 弹出队列的第一个元素，注意，并不会返回被弹出元素的值。
+访问队首元素，如例：q.front()，即最早被压入队列的元素。
+访问队尾元素，如例：q.back()，即最后被压入队列的元素。
+判断队列空，如例：q.empty()，当队列空时，返回true。
+访问队列中的元素个数，如例：q.size()。
+[cpp] view plain copy print?
+#include <cstdlib>  
+#include <iostream>  
+#include <queue>  
+#include<cstdio>   
+  
+using namespace std;  
+  
+int main()  
+{  
+    int e,n,m;  
+    queue<int> q1;  
+    printf("push进去的：");  
+    for(int i=0;i<10;i++)  
+    {  
+        q1.push(i);   
+        cout<<i<<" ";     
+    }  
+    cout<<endl;  
+         
+         
+    if(!q1.empty())  
+    cout<<"队列不为空\n";  
+      
+    n=q1.size();  
+    cout<<n<<endl;  
+       
+    m=q1.back();  
+    cout<<m<<endl;  
+      
+    printf("pop出来的：");  
+    for(int j=0;j<n;j++)  
+    {  
+       e=q1.front();  
+       cout<<e<<" ";  
+       q1.pop();  
+    }  
+    cout<<endl;  
+    if(q1.empty())  
+    cout<<"队列为空\n";  
+    return 0;  
+}  
+
+3、priority_queue
+在<queue>头文件中，还定义了另一个非常有用的模板类priority_queue(优先队列）。优先队
+列与队列的差别在于优先队列不是按照入队的顺序出队，而是按照队列中元素的优先权顺序
+出队（默认为大者优先，也可以通过指定算子来指定自己的优先顺序）。
+priority_queue 模板类有三个模板参数，第一个是元素类型，第二个容器类型，第三个是比
+较算子。其中后两个都可以省略，默认容器为vector，默认算子为less，即小的往前排，大
+的往后排（出队时序列尾的元素出队）。
+定义priority_queue 对象的示例代码如下：
+priority_queue<int> q1;
+priority_queue< pair<int, int> > q2; // 注意在两个尖括号之间一定要留空格。
+priority_queue<int, vector<int>, greater<int> > q3; // 定义小的先出队
+priority_queue 的基本操作与queue 相同。
+初学者在使用priority_queue 时，最困难的可能就是如何定义比较算子了。
+如果是基本数据类型，或已定义了比较运算符的类，可以直接用STL 的less 算子和greater
+算子——默认为使用less 算子，即小的往前排，大的先出队。
+如果要定义自己的比较算子，方法有多种，这里介绍其中的一种：重载比较运算符。优先队
+列试图将两个元素x 和y 代入比较运算符(对less 算子，调用x<y，对greater 算子，调用x>y)，
+若结果为真，则x 排在y 前面，y 将先于x 出队，反之，则将y 排在x 前面，x 将先出队。
+看下面这个简单的示例：
+[cpp] view plain copy print?
+#include <iostream>  
+#include <queue>  
+using namespace std;  
+class T  
+{  
+ public:  
+    int x, y, z;  
+   T(int a, int b, int c):x(a), y(b), z(c)  
+  {  
+      
+  }  
+};  
+ bool operator < (const T &t1, const T &t2)  
+{  
+   return t1.z < t2.z; // 按照z 的顺序来决定t1 和t2 的顺序  
+}  
+main()  
+{  
+    priority_queue<T> q;  
+    q.push(T(4,4,3));  
+    q.push(T(2,2,5));  
+    q.push(T(1,5,4));  
+    q.push(T(3,3,6));  
+  while (!q.empty())  
+ {  
+   T t = q.top(); q.pop();  
+   cout << t.x << " " << t.y << " " << t.z << endl;  
+ }  
+  return 1;  
+}  
+
+输出结果为(注意是按照z 的顺序从大到小出队的)：
+3 3 6
+2 2 5
+1 5 4
+4 4 3
+再看一个按照z 的顺序从小到大出队的例子：
+[cpp] view plain copy print?
+#include <iostream>  
+#include <queue>  
+using namespace std;  
+class T  
+{  
+public:  
+ int x, y, z;  
+ T(int a, int b, int c):x(a), y(b), z(c)  
+ {  
+      
+ }  
+};  
+bool operator > (const T &t1, const T &t2)  
+{  
+  return t1.z > t2.z;  
+}  
+main()  
+{  
+      priority_queue<T, vector<T>, greater<T> > q;  
+      q.push(T(4,4,3));  
+      q.push(T(2,2,5));  
+      q.push(T(1,5,4));  
+      q.push(T(3,3,6));  
+    while (!q.empty())  
+   {  
+   T t = q.top(); q.pop();  
+   cout << t.x << " " << t.y << " " << t.z << endl;  
+  }  
+  return 1;  
+}  
+/*输出结果为： 
+4 4 3 
+1 5 4 
+2 2 5 
+3 3 6*/  
+
+[cpp] view plain copy print?
+如果我们把第一个例子中的比较运算符重载为：  
+bool operator < (const T &t1, const T &t2)  
+{  
+return t1.z > t2.z; // 按照z 的顺序来决定t1 和t2 的顺序  
+}  
+则第一个例子的程序会得到和第二个例子的程序相同的输出结果。  
