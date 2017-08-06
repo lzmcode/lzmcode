@@ -31,19 +31,3 @@ int main()
     printf("max:%d\n",max);
     return 0;
 } 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
