@@ -19,7 +19,7 @@ void BFS(int x, int y)
 } 
 int main()
 {
-    freopen("input.txt","r",stdin); 
+    //freopen("input.txt","r",stdin); 
     int w,h;
     int x,y;
     while (scanf("%d%d", &w, &h) != EOF)
@@ -52,6 +52,7 @@ int main()
         BFS(x,y);
         printf("%d\n", ans); 
         //print
+        /* 
         for (i=0; i<=h+1; i++)
         {
             for (j=0; j<=w+1; j++)
@@ -60,7 +61,8 @@ int main()
             }
             printf("\n");
         }
+        */
     }
-    fclose(stdin);
+    //fclose(stdin);
     return 0;
 }
