@@ -1,3 +1,92 @@
+zoj 1008 Gnome Tetravex（DFS+经典剪枝） 
+zoj 1134 Strategic Game（树形DP入门） 
+zoj 1227 Free Candies（DP，记忆化搜索，位运算） 
+zoj 1231 Mysterious Mountain（二分答案+二分图最大匹配，陷阱很多） 
+zoj 1249 Pushing Boxes（推箱子，双参数BFS+优先队列） 
+zoj 1260 King（差分约束） 
+zoj 1301 The New Villa（BFS+位运算） 
+zoj 1310 Robot（BFS） 
+zoj 1319 Black Box（优先队列） 
+zoj 1354 Extended Lights Out（DFS+剪枝） 
+zoj 1395 Door Man（欧拉图） 
+zoj 1434 Frogger's For Dinner（青蛙过街模拟） 
+zoj 1435 Deeper Blue（国际象棋暴力枚举） 
+zoj 1479 Dweep（BFS+优先队列） 
+zoj 1484 Minimum Inversion Number（逆序数） 
+zoj 1508 Intervals（差分约束入门） 
+zoj 1524 Supermarket（一维在线刷新DP） 
+zoj 1556 Heroes Of Might And Magic（英雄无敌模拟+DP） 
+zoj 1591 Winlinez（小游戏暴力模拟） 
+zoj 1675 Push!!（推箱子，记忆化搜索） 
+zoj 1894 Adventures in Moving - Part IV（经典DP） 
+zoj 1919 Catenyms（欧拉图，dfs） 
+zoj 1935 XYZZY（最长路+传递闭包） 
+zoj 1960 Anagram Groups（字符串，排序） 
+zoj 1985 Largest Rectangle in a Histogram（迭代搜索） 
+zoj 1989 Who's the Boss（迭代搜索） 
+zoj 2016 Play on Words（欧拉图+并查集） 
+zoj 2039 The Dog Task（二分图最大匹配） 
+zoj 2049 Advertisement（差分约束） 
+zoj 2059 The Twin Towers（经典DP） 
+zoj 2096 Door to Secret（双调DP） 
+zoj 2235 The Peanuts（简单模拟） 
+zoj 2279 Survival（状态压缩DP，经典入门题） 
+zoj 2291 Maze（DFS） 
+zoj 2292 Anti-bug before Chinese Valentine's Day（DFS+剪枝） 
+zoj 2322 Auctions R Us（淘宝支付宝拍卖模拟） 
+zoj 2411 Link Link Look（连连看，BFS） 
+zoj 2472 Interesting Maze Game（纯模拟） 
+zoj 2526 FatMouse and JavaBean II（最短路，dijkstra） 
+zoj 2581 Tour（双调DP） 
+zoj 2689 Halls（暴力二分匹配） 
+zoj 2719 Two Pipelines（贪心，几何） 
+zoj 2761 Help Lin to walk less（最短路，坐标提取） 
+zoj 2770 Burn the Linked Camp（差分约束） 
+zoj 2771 Get Out of the Glass（光线反射，DP） 
+zoj 2778 Triangular N-Queens Problem（三角N皇后） 
+zoj 2834 Maximize Game Time（超经典树形DP，校赛题） 
+zoj 2881 Full Tank?（BFS+优先队列） 
+zoj 2910 Soccer Tournament（恶心繁琐的模拟题） 
+zoj 2921 Stock（股票，贪心） 
+zoj 2923 Calculate Roads（最短路） 
+zoj 2935 Here We Go(relians) Again（dijkstra，二维） 
+zoj 2963 Treasure Hunter（图论综合题，推荐） 
+zoj 3026 Twirling Robot （BFS+优先队列） 
+zoj 3033 Board Games（SPFA经典入门题） 
+zoj 3052 Unix Robots YM传说中的偶像（大自然题，bonus） 
+zoj 3089 Tourist（双调DP） 
+zoj 3090 Assemble（二分+贪心） 
+zoj 3094 Escape from Enemy Territory（BFS+二分） 
+zoj 3103 Cliff Climbing（SPFA，稍难） 
+zoj 3111 Domino Art（二分匹配） 
+zoj 3123 Subsequence（二分） 
+zoj 3146 Babes in the Woods（SPFA入门题） 
+zoj 3211 Dream City（经典DP） 
+zoj 3214 Bussiness Rules Management System（STL，map，set） 
+zoj 3220 Killing Streak（Dota模拟题） 
+zoj 3221 Lich（Dota模拟题，Lich大招） 
+zoj 3250 Chain Factor（纯模拟题，细节较多，容易TLE） 
+zoj 3255 The Scylla（BFS+优先队列） 
+zoj 3269 Zombies VS Plants（暴力DFS+回溯，很爽的大自然题） 
+zoj 3270 Seat taking up is tough（占座模拟） 
+zoj 3277 P2P File Sharing System（暴力模拟，需要细心和耐心） 
+zoj 3286 Very Simple Counting（数论，筛选法） 
+zoj 3290 Longest Subtrahend Sequence（水题） 
+zoj 3291 Never End（BFS，比较麻烦） 
+zoj 3295 War of 218（水题） 
+zoj 3297 Cookie Choice II（贪心，活动窗体） 
+zoj 3300 Mahjong（麻将，暴力DFS） 
+zoj 3304 Prison Break（DFS，判连通） 
+zoj 3305 Get Sauce（DFS+剪枝） 
+zoj 3309 Search New Posts（STL，map） 
+zoj 3310 Unrequited Love（环转化链，DP） 
+zoj 3311 ZOJ Special AC String（水题，字符串找规律） 
+zoj 3315 Runaway Robot（搜索，叠加图） 
+zoj 3316 Game（一般图匹配，博弈） 
+zoj 3317 Murder in Restaurant（水题） 
+zoj 3318 Strange Country（dp+最短路） 
+
+
 简单题
 #1001 -____-b  A+B。
 #1110 Dick and Jane 胡乱枚举收缩一下情况就可以了。
