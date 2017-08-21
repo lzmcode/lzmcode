@@ -19,7 +19,5 @@ int main()
         printf("       %02d:%02d       %02d:%02d%8d\n",s1,s2,e1,e2,ans);
     }
     puts("End of program 3 by team X");
-
-
     return 0;
 }
