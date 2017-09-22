@@ -73,24 +73,24 @@ bool SPFA(int s)
     memset(in_queue, 0, sizeof(in_queue));
     memset(cnt, 0, sizeof(cnt));
     for (int i=0; i<num_nodes; ++i)
-        d[i] = __inf;
-
+        d[i] = __inf; //初始化所有节点的距离为oo 
+ 
     d[s] = 0;
-    in_queue[s] = true;
+    in_queue[s] = true; //顶点入队 
     Q.push(s);
-    while (!Q.empty()) {
-        in_queue[u=Q.front()] = false;
+    while (!Q.empty()) { //当队列非空的时候 
+        in_queue[u=Q.front()] = false; //弹出队列中的第一项 
         Q.pop();
         for (int i=0; i<G[u].size(); ++i) {
             Edge &e = edges[G[u][i]];
             if (d[e.to] > d[u] + e.weight) {
-                d[e.to] = d[u] + e.weight;
+                d[e.to] = d[u] + e.weight; //松弛操作 
                 p[e.to] = G[u][i];
                 if (!in_queue[e.to]) {
-                    Q.push(e.to);
+                    Q.push(e.to); //不在队列中就入队 
                     in_queue[e.to] = true;
                     if (++cnt[e.to] > num_nodes)
-                        return false;
+                        return false; //循环超过节点数，说明有负权圈 
                 }
             }
         }
@@ -98,23 +98,24 @@ bool SPFA(int s)
     return true;
 }
 
-int indegree[max_nodes];
+int indegree[max_nodes]; //入度数组 
 void asp(int s)
 {
+    //初始化 
     queue<int> Q;
     for (int i=0; i<num_nodes; ++i) {
-        d[i] = __inf;
-        indegree[i] = 0;
+        d[i] = __inf; //到每个点的距离都是oo 
+        indegree[i] = 0; //每个点的入度都是0 
     }
     for (int i=0; i<num_edges; ++i)
-        ++indegree[edges[i].to];
+        ++indegree[edges[i].to]; //确定每个点的实际入度 
     for (int i=0; i<num_nodes; ++i)
-        if (indegree[i] == 0) Q.push(i);
+        if (indegree[i] == 0) Q.push(i); //把入度为0的点放入队列 
 
-    d[s] = 0;
+    d[s] = 0; //到自己的距离为0 
     while (!Q.empty()) {
         int w = Q.front();
-        Q.pop();
+        Q.pop(); //获得队列中的第一个点 
         for (int i=0; i<G[w].size(); ++i) {
             if (d[edges[G[w][i]].to] > d[w] + edges[G[w][i]].weight && d[w] != __inf) { 
                 d[edges[G[w][i]].to] = d[w] + edges[G[w][i]].weight;
@@ -122,6 +123,7 @@ void asp(int s)
             }
             if (--indegree[edges[G[w][i]].to] == 0)
                 Q.push(edges[G[w][i]].to);
+            //如果能放进去，入度-1，入度减少到0就继续放入队列 
         }
     }
 }
