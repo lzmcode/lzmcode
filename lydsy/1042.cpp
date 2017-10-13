@@ -1,5 +1,6 @@
 /**
-容斥原理 
+容斥原理
+ 
 **/
 #include<cstdio>
 #include<iostream>
