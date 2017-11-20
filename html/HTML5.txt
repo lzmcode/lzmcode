@@ -1,0 +1,233 @@
+<head> </head>
+head标签只用于存储信息，或者是给浏览器看的，不用于显示信息
+head标签是元信息的储存器
+
+<p lang="en-us">paragraph</p>
+特性名称 特性值
+<meta name="keywords" content="手机，智能机">
+name表示这个元信息是给什么储存的 content后面填写内容
+<b>加粗</b>
+<i>斜体</i>
+<sup>上标a^2</sup>
+<sub>下标H20</sub>
+<title>我的淘宝网</title> title标签用来储存网页标题
+搜索引擎把这个作为检索结果的标题 演示:淘宝网 SEO优化
+
+<body>
+标题标签也叫标题元素 一共有六个 h1,h2,..h6
+h1是最大的，概括整个页面的主题的 博客名称，第一篇文章的标题
+只应该有一个h1,   h2h3h4可以有多个
+并不是嵌套和从属关系 并列关系
+没有h7 大小演示
+h1-h6样式不同 名字不同语意不同
+搜索引擎读的时候 先读title 检测robot（s）.txt 然后检测h1
+h1中可以包含b元素 <b> </b> 嵌套子元素
+</body>
+以上就是标题标签
+
+<p> </p> 段落标签 划分自然段
+aaa bbb 不换行 有时候太长
+ahsdhiuahweiuhuiqsdfjijsiofdjiosjdf
+我们只想上下滚动不想左右滚动
+敲断是没有效果的 多个空格也只算一个空格 这个特性叫做   白色空间折叠
+格式由HTML决定 不会影响文章的结构
+页面可以有多个大段，p支持嵌套 大段里面嵌套小段
+
+<a> </a>链接 锚链接anchor 网络测试
+<a href="http://baidu.com/" target="_self">网络测试 </a>
+<img>只有开始标签 没有结束标签 规范里面img不含有子元素 不是一个容器 结构树的最后一个节点
+告诉浏览器含有一个链接 src = source
+<img src="http://asdjo.com/1.jpg">
+<img src="http://asdjo.com/1.jpg" alt="替代标签">
+<div> </div> 容纳其他的元素 division 容器 div也是支持嵌套的
+为你的网页添加样式和结构 用来分类
+<abbr> </abbr> abbreviation 缩写 p也可以但会打断 span或者p添加浮动显示文字 浏览器给abbr一个默认样式
+<small>副标题</small>
+<br>断行 <hr>水平线
+<header> </header>
+<footer>页脚</footer> 不常用但是很重要的信息
+
+header和footer是有语意的 优先检索 本身都是干净的元素容器 便于读代码 一般footer全是链接
+
+表格
+table tr td th thead tbody
+th是用来专门制定表格的属性的
+       <table border="1">
+           <tr>
+               <th>Name</th>
+               <th>Mood</th>
+           </tr>
+           <tr>
+               <td>
+                   Terrance
+               </td>
+               <td>
+                   :)
+               </td>
+           </tr>
+                      <tr>
+               <td>
+                   Upon
+               </td>
+               <td>
+                   :D
+               </td>
+           </tr>
+       </table>
+thead更加严谨了
+
+<link> 没有结束标签 不能直接显示 影响浏览器行为和页面样式 和a非常像
+<link href="base.css"> 加载样式表
+<script> alart(123) </script> 加载
+<script src="base.js"> alart(123) </script>内容非常多 保证html非常干净简洁 浏览器从上到下执行 等待加载 页面等待加载
+页面对js的依赖不多的话可以放到后面 先加载静态内容 如果非常依赖js的话那么就放到head里面也是可以的
+<body style="background: #a20">
+
+       <form>
+           username:<input> <br>
+           password:<input> <br>
+           <button>Login</button>
+           <button>Register</button>
+       </form>
+
+<code> 和 <pre>标签是用来显示代码的
+code是镶嵌到文字内部的 pre标签是用来显示一大段代码的
+他是等宽字体
+
+<frameset 
+
+我们通常认为表单是表单元素的容器
+
+以下是不重要的
+<strong> <>加粗强调
+<em> 斜体
+<blockquote>长引用
+<q> 短引用
+<cite>
+<dfn>
+<address>地址 斜体
+<ins>下划线
+<del>删除线 <s> 中划线
+
+CSS 层叠样式表
+表达效果丰富 更具表现力
+一次定义即可 便于信息检索 表现和结构分离 可读性好 结构化数据文档更简洁
+W3C组织提倡的
+
+表现形式 文档结构 表现和文档结构分离
+1.代码没有冗余 不修改结构的情况下修改样式
+2.更加灵活强大
+
+内嵌样式
+优先级和顺序 内联>内部>import>link
+内联的时候用分号隔开
+Selector 选择器决定该样式定义对哪些元素起作用
+classValue 类选择器
+E.classValue 只对指定元素起作用
+ID选择器
+选择器组合，集体申明
+h1,h2,h3,h4,h5,h6 具有相同样式的元素
+css中的字体及文本相关属性
+
+1.字体相关属性
+
+　　字体主要可以设置color、font-family、font-size、font-size-adjust、font-stretch、font-style、font-weight、text-decoraction、font-variant、text-shadow、text-transform、line-height、letter-spacing、word-spacing这几种属性
+
+　　color即颜色；
+
+　　font-size即字体大小；
+
+　　font-famiy是字体的样式吧；
+
+　　font-size-adjust用于控制不同字体尺寸进行微调；
+
+　　text-decoraction控制字体是否有下划线，修饰线什么的；
+
+　　font-stretch可以控制字体的拉伸或者是压缩；
+
+　　font-style就是字体的文字风格，可以让字体斜体，粗体什么的；
+
+　　font-weight控制字体是否加粗，可以设置normal，lighter，bold,bolder;
+
+　　font-variant控制字体的大小写；
+
+　　text-shadow就是字体阴影嘛，甚至可以添加多个阴影；
+
+　　line-height设置字体的行高；
+
+　　letter-spacing设置字符之间的间隔；
+
+　　word-spacing设置单词之间的间隔；
+
+　　text-transform设置文字的大小写；
+
+2.css3中支持的颜色表示方法
+
+　 主要有一下几种表示方法吧：
+
+　　直接上单词：red，grey，green；
+
+　　用十六进制的方式：#000000~#ffffff；
+
+　　用rgb（）函数表示；
+
+　　用hsl（）函数表示；
+
+　　用rgba（）函数表示，最后的a 主要是设置透明度的；
+
+　　用hslb（）函数表示，最后的a也是表示头透明度的；
+
+3.文本相关属性
+
+　　主要有几种：
+
+　　text-indent：设置文本的缩进；
+
+　　text-overflow控制溢出文本的显示；
+
+　　vertical-align设置文本的竖直对齐方式；
+
+　　text-align设置文本的水平对齐方式；
+
+　　direction：设置文本的显示方向；
+
+　　word-break设置文本内容的换行方式，可以设置为normal，keep-all，break-all；
+
+　　white-space设置文本内容对空格的处理方式，可以设置为normal，nowrap；
+
+　　word-wrap设置文本内容的换行方式，可以设置为normal，break-word（我不知道它和word-break有啥区别，好像一样　　　　　　　　　　的，估计后者针对的浏览器不同吧，对了好像有点针对长单词和URL 的意思）；
+
+4.设置使用服务器端的字体
+
+　　设置方式：
+
+　　<style type="text/css">
+
+　　　　@font-face
+
+　　　　　　{
+
+　　　　　　　　font-family:name;
+
+　　　　　　　　src:url(url) format(fontfarmat);
+
+　　　　　　　　srules;
+
+　　　　　　}
+
+5.一般优先使用客户端的字体为好　
+
+文本属性
+text-indent:30px; 首行缩进
+text-decoration : none 去掉下划线  || underline 加上下划线 || line-through 加上删除线
+text-align : left | right | center | justify
+
+body{
+    background:url("bg5.jpg ")
+}
+
+<ol>有序列表
+<dl>定义列表
+<dt>定义列表的标题
+<ldd>
+<dd>
