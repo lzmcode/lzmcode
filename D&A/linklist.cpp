@@ -1,49 +1,57 @@
 #include <cstdio>
-#include <iostream>
 #include <cstdlib>
+#include <iostream>
+using namespace std;
 
-typedef struct Node{
+typedef struct Node {
     int num;
     struct Node *next;
 }*LinkList, *pNode;
-
-LinkList GetEmptyList()
-{
-    LinkList head = (pNode)malloc(sizeof(struct Node));
+ 
+LinkList getEmptyList() {
+    LinkList head = new Node;
     head->next = NULL;
     return head;
 }
-
-void AddNode(LinkList head,pNode newnode)
-{
-    newnode->next = head->next;
-    head->next = newnode;
-    return;
+ 
+void addNode(LinkList head, pNode newNode) {
+    newNode->next = head->next;
+    head->next = newNode;
 }
-
-void ShowList(LinkList head)
-{
-    pNode p=head,q;
-    while (p->next != NULL)
-    {
-         printf("%d ",p->next->num);
-         q = p->next;
-         p = p->next;
-         free(q);
+ 
+void deleteNum(LinkList head, int num) {
+    pNode p = head,q;
+    while (p->next) {
+        if(p->next->num == num) {
+            q = p->next;
+            p->next = q->next;
+            delete(q);
+        }
+        else p = p->next;
     }
-    return;
 }
-
+ 
+void showList(LinkList head) {
+    pNode p = head->next;
+    while (p) {
+        cout << p->num << endl; 
+        p = p->next;
+    }
+    cout << endl; 
+}
+ 
 int main()
 {
-    LinkList head=GetEmptyList();
-    for (int i=0; i<10; i++)
-    {
-         pNode newnode = (pNode)malloc(sizeof(struct Node));
-         newnode->num = i;         
-         AddNode(head,newnode);
+    pNode newNode;
+    LinkList L = getEmptyList();
+    for (int i = 0; i < 10; i++) {
+        newNode = new Node;
+        newNode->num = i;
+        addNode(L, newNode);
     }
-    ShowList(head);
+    showList(L);
+    deleteNum(L,5);
+    showList(L);
     return 0;
 }
 
