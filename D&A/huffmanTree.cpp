@@ -1,13 +1,11 @@
 #include <iostream>
 #include <queue>
-#include <cstring>
 #include <vector>
+#include <cstring>
 #include <algorithm>
 using namespace std;
 
-#define ENDCHAR '('
-#define NULLCHAR '#'
-
+#define NULLCHAR '*'
 #define MAXBUFROW 1010
 #define MAXBUFCOL 1010
  
@@ -24,12 +22,11 @@ public:
         return  a->freq > b->freq;
     }  
 };
-  
+
 priority_queue<Node*, vector<Node*>, Cmp> pq;  
   
 HuffmanTree createTree() {
-    int N;
-    cin >> N;
+    int N; cin >> N;
     for (int i = 0; i < N; ++i) {  
         char ch; int num;
         cin >> ch >> num;
@@ -51,34 +48,34 @@ HuffmanTree createTree() {
     return root;
 }  
   
-struct PrintNode {  
+struct DictNode {  
     int freq;   
     char ch;
     string code;
 };
 
-vector<PrintNode> hCode;  
-bool cmp(const PrintNode &a , const PrintNode &b) {  
+vector<DictNode> hCode;  
+bool cmp(const DictNode &a , const DictNode &b) {  
     return a.freq > b.freq;
 }
 
 void recordCode(pNode p, string ans) {
     if (!p) return;
     if (p->ch != NULLCHAR) {  
-        PrintNode pn;
+        DictNode pn;
         pn.ch = p->ch; 
         pn.freq = p->freq;  
         pn.code = ans;
         hCode.push_back(pn);
         return;  
-    }  
+    }
     recordCode(p->lchild, ans + "0");  
     recordCode(p->rchild, ans + "1");  
     //delete p->lchild;  
     //delete p->rchild;  
 }
 
-inline void printAllCode() {
+inline void printCode() {
     for (int i = 0; i < hCode.size(); ++i) {  
         cout << hCode[i].ch << " " << hCode[i].freq << " " << hCode[i].code << endl;  
     }
@@ -87,38 +84,42 @@ inline void printAllCode() {
 void encode() {
     FILE *fin = fopen("ToBeTra.txt", "r");
     FILE *fout = fopen("CodeFill.txt", "w");
+    cout << "ENCODE: "; 
     char ch;
     while (fscanf(fin, "%c", &ch) != EOF) {
         for (int i=0; i < hCode.size(); ++i) {
             if (hCode[i].ch == ch) {
                 fprintf(fout, "%s", hCode[i].code.c_str());
+                cout << hCode[i].code;
                 continue;
             }
         }
     }
+    cout << endl; 
     fclose(fin); fclose(fout);
-    cout << "Encode success" << endl;
 }
 
 void decode() {
     FILE *fin = fopen("CodeFill.txt", "r");
     FILE *fout = fopen("Textfile.txt", "w");
+    cout << "DECODE: ";
     char ch; string key = "";
     while (fscanf(fin, "%c", &ch) != EOF) {
         key += ch;
         for (int i=0; i < hCode.size(); ++i) {
             if (hCode[i].code == key) {
                 fprintf(fout, "%c", hCode[i].ch);
+                cout << hCode[i].ch;
                 key = "";
                 continue;
             }
         }
     }
     fclose(fin); fclose(fout);
-    cout << "Decode success" << endl;
+    cout << endl;
 }
 
-void print_tree(pNode p, int rx, int ry, int rc, char buf[][MAXBUFCOL]) {
+void buildBuf(pNode p, int rx, int ry, int rc, char buf[][MAXBUFCOL]) {
     int l = rx - rc;
     int r = rx + rc;
     if (p->ch != NULLCHAR)
@@ -126,59 +127,45 @@ void print_tree(pNode p, int rx, int ry, int rc, char buf[][MAXBUFCOL]) {
     else {
         buf[ry][rx] = p->ch;
         if(p->lchild != NULL) {
-            buf[ry + 1][rx - 1]='/';
+            buf[ry + 1][rx - 1] = '/';
             if (p->lchild->ch != NULLCHAR) 
                 buf[ry + 2][rx - 2] = p->lchild->ch;
         }
         if(p->rchild != NULL) {
-            buf[ry + 1][rx + 1]='\\';
+            buf[ry + 1][rx + 1] = '\\';
             if (p->rchild->ch != NULLCHAR)
                 buf[ry + 2][rx + 2] = p->rchild->ch;
         }
-        print_tree(p->lchild, l, ry+2, (rc>>1), buf);
-        print_tree(p->rchild, r, ry+2, (rc>>1), buf);
+        buildBuf(p->lchild, l-1, ry+2, (rc>>1), buf);
+        buildBuf(p->rchild, r+2, ry+2, (rc>>1), buf);
     }
 }
 
 void printTree(HuffmanTree ht) {
     char buf[MAXBUFROW][MAXBUFCOL];
-    for (int i=0; i<MAXBUFROW; i++) {
-        for (int j=0; j<MAXBUFCOL; j++) {
-            buf[i][j] = ' ';
-        }
-    }
-    print_tree(ht, 8, 0, 4, buf);
+    memset(buf, ' ', sizeof(buf));
+    buildBuf(ht, 12, 0, 4, buf);
     int line = 0;
     for (int i=0; i<MAXBUFROW; i++) {
         int j = MAXBUFCOL-1;
         while (buf[i][j] == ' ' && j >= 0)
             j--;
-        if (j > -1) {
-           buf[i][j+1] = ENDCHAR;
-           line++;
-           continue;
-        }
-        else
-           break;
+        buf[i][j+1] = '\0';
+        if (j <= -1) break;
+        line++;
     }
     for (int i=0; i<line; i++) {
-        for (int j=0; j<MAXBUFCOL; j++) {
-            if (buf[i][j] != ENDCHAR)
-                cout << buf[i][j];
-            else
-                break;
-        }
-        cout << endl;
+        cout << buf[i] << endl;
     }
 }
 
 int main()  
 {
-    freopen("rank.txt", "r", stdin); 
+    freopen("rank.txt", "r", stdin);
     HuffmanTree ht = createTree();
     recordCode(ht, "");
     sort(hCode.begin(), hCode.end(), cmp);
-    printAllCode();
+    printCode();
     printTree(ht);
     encode();
     decode();
