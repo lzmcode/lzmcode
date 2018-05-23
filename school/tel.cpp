@@ -62,8 +62,8 @@ ListNode* ListFind(LinkList LL)
         string no;
         cout<<"请输入编号："; 
         cin>>no;
-        while(LL){
-            if(LL->no==no)
+        while(LL->next){
+            if(LL->next->no==no)
                 break;
             LL=LL->next;    
         }
@@ -72,8 +72,8 @@ ListNode* ListFind(LinkList LL)
         string name;
         cout<<"请输入姓名：";
         cin>>name;
-        while(LL){
-            if(LL->name==name)
+        while(LL->next){
+            if(LL->next->name==name)
                 break;
             LL=LL->next;    
         }
@@ -86,7 +86,7 @@ void DelNode(LinkList LL)
     pNode p = (pNode)new Node;
     pNode q = (pNode)new Node;
     p=ListFind(LL);   //调用查找函数
-    if (p==NULL) {
+    if (p->next==NULL) {
         printf("没有查到要删除的通讯者!\n");
         return;
     }
@@ -97,8 +97,8 @@ void DelNode(LinkList LL)
         q=p->next;
         p->next=q->next;
         free(q);    
-    }
-    if(c=='n'){
+    } else if (c=='n') {
+        printf("放弃删除！\n");
         return;
     }
     printf("通讯者已被删除！\n");
@@ -140,9 +140,9 @@ int main()
                 break; }
             case 3: { 
                 pNode p = ListFind(LL);
-                if (p) {
+                if (p->next) {
                     printf("编号\t姓名\t性别\t电话\t地址\n");
-                    print(p);
+                    print(p->next);
                 } else {
                     cout << "不存在" << endl; 
                 }
