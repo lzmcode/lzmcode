@@ -1,0 +1,29 @@
+1.zip
+$ zip -r myfile.zip ./*
+将当前目录下的所有文件和文件夹全部压缩成myfile.zip文件,－r表示递归压缩子目录下所有文件.
+
+2.unzip
+$ unzip -o -d /home/sunny myfile.zip
+把myfile.zip文件解压到 /home/sunny/
+-o:不提示的情况下覆盖文件；
+-d:-d /home/sunny 指明将文件解压缩到/home/sunny目录下；
+
+3.其他
+$ zip -d myfile.zip smart.txt
+删除压缩文件中smart.txt文件
+$ zip -m myfile.zip ./rpm_info.txt
+向压缩文件中myfile.zip中添加rpm_info.txt文件
+
+python 用pip安装cv2（超简单的一句话）
+pip install opencv-python
+
+ossfs常见配置错误
+以下问题出现在非root用户下
+
+执行echo ××××> /etc/passwd-ossfs  bash: /etc/passwd-ossfs: Permission denied
+使用sudo vim 在/etc下新建就可以，将echo等内容拷贝进去
+ 
+ 
+ossfs: credentials file /etc/passwd-ossfs should not have others permissions.      should not have group permissions
+
+chmod 640 /etc/passwd-ossfs
